@@ -1,0 +1,36 @@
+type User {
+    id: ID!
+    username: String!
+    displayName: String!
+    avatarUrl: String!
+    followerCount: Int!
+}
+
+type Post {
+    id: ID!
+    content: String!
+    author: User!
+    likeCount: Int!
+    commentCount: Int!
+    mediaUrls: [String!]!
+    createdAt: String!
+    score: Float!
+}
+
+type FeedConnection {
+    posts: [Post!]!
+    nextCursor: String
+    hasNextPage: Boolean!
+}
+
+type Query {
+    feed(userId: ID!, limit: Int = 20 cursor: String): FeedConnection!
+    post(id: ID!): Post
+    user(id: ID!): User
+}
+
+type Mutation {
+    createPost(authorId: ID!, content: String!): Post!
+    followUser(followerId: ID!, followeeId: ID!): Boolean!
+    likePost(postId: ID!, userId: ID!): Post!
+}

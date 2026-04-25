@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: feed-demo
+
+  data:
+    mongodb:
+      uri: "mongodb+srv://kalyanipatra2003_db_user:xJYOVcovWWQbnOP0@feed-demo.99hddrl.mongodb.net/feeddb?retryWrites=true&w=majority&appName=feed-demo"
+      database: feeddb
+
+  graphql:
+    graphiql:
+      enabled: true
+    path: /graphql
+
+logging:
+  level:
+    org.springframework.data.mongodb: DEBUG

@@ -1,0 +1,45 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.kalyani'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot core
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// GraphQL - Spring's official starter
+	implementation 'org.springframework.boot:spring-boot-starter-graphql'
+
+	// MongoDB
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+	// Lombok - reduces boilerplate
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Testing
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework:spring-webflux'
+	testImplementation 'org.springframework.graphql:spring-graphql-test'
+
+	implementation 'io.github.cdimascio:dotenv-java:3.0.0'
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
