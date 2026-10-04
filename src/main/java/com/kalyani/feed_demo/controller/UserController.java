@@ -25,7 +25,7 @@ public class UserController {
         return userRepository.findById(id).orElseThrow();
     }
 
-    // ─────────────────────────────────────────────────────────────
+    //
     // @BatchMapping solve N+1 in Spring GraphQL
     //
     // instead for each post -> fetch author (N queries)
@@ -33,7 +33,7 @@ public class UserController {
     //
     // Spring calls this automatically when author field is resolved
     // across a list of posts never call it manually.
-    // ─────────────────────────────────────────────────────────────
+    //
     @BatchMapping
     public Map<Post, User> author(List<Post> posts) {
 
